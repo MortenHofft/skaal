@@ -134,7 +134,7 @@ export const renderPlayer = (root, id) => {
     });
     const searchWrap = el('div', { class: 'search-wrap' }, [searchInput, clearBtn]);
 
-    resultsBox = el('div', { class: 'results' });
+    resultsBox = el('div', { class: 'search-results' });
 
     const slipsView = player.slips.length === 0
       ? el('p', { class: 'hint' }, 'Ingen sedler endnu. Søg ovenfor og tap for at tilføje.')
