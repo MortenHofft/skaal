@@ -74,7 +74,7 @@ export const renderHome = (root) => {
       el('section', { class: 'card' }, [
         el('h2', {}, 'Spillere'),
         el('ul', { class: 'list' }, playerRows),
-        el('button', { class: 'btn primary', on: { click: addPlayer } }, '+ Tilføj spiller'),
+        el('button', { class: 'btn primary add-player', on: { click: addPlayer } }, '+ Tilføj spiller'),
       ]),
       el('section', { class: 'actions' }, [
         el('button', {

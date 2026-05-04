@@ -153,6 +153,18 @@ export const renderPlay = (root) => {
 
     root.appendChild(el('div', { class: 'view play active' }, [
       el('header', { class: 'play-top' }, [
+        el('button', {
+          class: 'icon-btn end-round',
+          'aria-label': 'Afslut runden',
+          on: { click: () => {
+            stopTimer();
+            if (confirm('Afslut runden og gå til resultater?')) {
+              goResults();
+            } else {
+              startInterval();
+            }
+          } },
+        }, '✕'),
         el('span', { class: 'now-playing' }, currentPlayer.name),
         timerEl,
         el('span', { class: 'remaining' }, String(remaining)),
