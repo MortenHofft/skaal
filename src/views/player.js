@@ -110,11 +110,29 @@ export const renderPlayer = (root, id) => {
       spellcheck: 'false',
       value: lastQuery,
     });
+    const clearBtn = el('button', {
+      type: 'button',
+      class: 'search-clear',
+      'aria-label': 'Ryd søgning',
+      on: { click: () => {
+        searchInput.value = '';
+        clearTimeout(debounce);
+        onSearch('');
+        updateClearBtn();
+        searchInput.focus();
+      } },
+    }, '✕');
+    const updateClearBtn = () => {
+      clearBtn.hidden = !searchInput.value;
+    };
+    updateClearBtn();
     searchInput.addEventListener('input', () => {
+      updateClearBtn();
       clearTimeout(debounce);
       const q = searchInput.value;
       debounce = setTimeout(() => onSearch(q), 300);
     });
+    const searchWrap = el('div', { class: 'search-wrap' }, [searchInput, clearBtn]);
 
     resultsBox = el('div', { class: 'results' });
 
@@ -146,7 +164,7 @@ export const renderPlayer = (root, id) => {
       ]),
       el('section', { class: 'card' }, [
         el('h2', {}, 'Find sedler'),
-        searchInput,
+        searchWrap,
         resultsBox,
       ]),
       el('section', { class: 'card' }, [
