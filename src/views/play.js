@@ -140,6 +140,17 @@ export const renderPlay = (root) => {
     const remaining = game.remaining.length + game.skipped.length;
     timerEl = el('div', { class: 'timer' }, `${timerLeft}s`);
 
+    const skipBtn = el('button', {
+      class: 'btn skip big',
+      disabled: true,
+      on: { click: onSkip },
+    }, '⤼ Spring');
+    const guessBtn = el('button', {
+      class: 'btn primary big',
+      disabled: true,
+      on: { click: onGuessed },
+    }, '✓ Gættet');
+
     root.appendChild(el('div', { class: 'view play active' }, [
       el('header', { class: 'play-top' }, [
         el('span', { class: 'now-playing' }, currentPlayer.name),
@@ -154,11 +165,13 @@ export const renderPlay = (root) => {
         }),
         hideTitle ? null : el('div', { class: 'card-title' }, slip.title),
       ]),
-      el('div', { class: 'play-actions' }, [
-        el('button', { class: 'btn skip big', on: { click: onSkip } }, '⤼ Spring'),
-        el('button', { class: 'btn primary big', on: { click: onGuessed } }, '✓ Gættet'),
-      ]),
+      el('div', { class: 'play-actions' }, [skipBtn, guessBtn]),
     ]));
+
+    setTimeout(() => {
+      skipBtn.disabled = false;
+      guessBtn.disabled = false;
+    }, 1000);
 
     startInterval();
   };
