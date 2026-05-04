@@ -319,15 +319,16 @@ input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
   border-radius: var(--r-md);
   box-shadow: var(--shadow);
 }
-.play-top .end-round {
-  font-size: 14px;
-  min-width: 32px;
-  min-height: 32px;
-  padding: 4px 8px;
-  opacity: 0.5;
+.play-top .end-turn {
+  font-size: 20px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 10px;
+  color: var(--fg);
+  opacity: 0.7;
   margin-right: 4px;
 }
-.play-top .end-round:active { opacity: 1; }
+.play-top .end-turn:active { opacity: 1; }
 .now-playing { font-weight: 600; flex: 1; }
 .timer {
   font-size: 30px;
