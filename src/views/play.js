@@ -117,9 +117,20 @@ export const renderPlay = (root) => {
         }, game.phase === 'handoff' ? 'Tap når næste er klar' : 'Tap for at starte'),
       ]),
       el('div', { class: 'scoreboard' },
-        game.playerOrder.map(id => {
+        game.playerOrder.map((id, idx) => {
           const p = playerById(id);
-          return el('div', { class: 'score-pill' + (id === currentPlayer.id ? ' current' : '') }, [
+          const isCurrent = id === currentPlayer.id;
+          return el('button', {
+            class: 'score-pill' + (isCurrent ? ' current' : ''),
+            'aria-label': isCurrent ? `${p.name} (i tur)` : `Lad ${p.name} tage turen`,
+            on: { click: () => {
+              if (isCurrent) return;
+              game.currentPlayerIdx = idx;
+              game.phase = 'ready';
+              persist();
+              render();
+            } },
+          }, [
             el('span', {}, p.name),
             el('strong', {}, String(game.scores[id] || 0)),
           ]);
