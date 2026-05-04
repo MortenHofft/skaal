@@ -219,7 +219,7 @@ input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .search-clear:active { background: #e6dec9; }
 
 /* Search results */
-.results { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.search-results { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .result-row {
   display: flex; align-items: center; gap: 12px;
   background: var(--bg);
