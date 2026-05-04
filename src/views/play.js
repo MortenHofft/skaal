@@ -36,6 +36,7 @@ export const renderPlay = (root) => {
   const startTurn = () => {
     refillFromSkipped();
     if (game.remaining.length === 0) return goResults();
+    game.remaining = shuffle(game.remaining);
     game.phase = 'active';
     timerLeft = game.timerSeconds;
     persist();
