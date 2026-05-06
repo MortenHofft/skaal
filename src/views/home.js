@@ -91,7 +91,7 @@ export const renderHome = (root) => {
           el('p', { class: 'hint' }, [
             'Gratis på ',
             el('a', { href: 'https://www.themoviedb.org/settings/api', target: '_blank', rel: 'noopener' }, 'themoviedb.org'),
-            ' (vælg "API Read Access" v3 auth).',
+            ' (vælg "API Key" v3 auth).',
           ]),
         ]),
         el('label', { class: 'field' }, [
