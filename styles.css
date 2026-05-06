@@ -32,6 +32,13 @@ html, body {
   -webkit-text-size-adjust: 100%;
   overscroll-behavior-y: contain;
   touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 button, a, input, label { touch-action: manipulation; }
